@@ -1,0 +1,15 @@
+.register-form-container {
+    width:100%;
+    /*position: absolute;
+    top: auto;
+    transform: translateY(-50%);*/
+    margin-bottom: 20px;
+}
+.register-form {
+    max-width: 400px;
+    text-align: left;
+    margin: 0 auto!important;
+}
+.register-header-text {
+    text-align: center;
+}

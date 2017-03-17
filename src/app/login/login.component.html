@@ -1,0 +1,41 @@
+<div class="login-form-container">
+  <h5 class="login-header-text">Please input your credential to continue</h5>
+  <br>
+  <form [formGroup]="loginForm" class="login-form form-horizontal" (ngSubmit)="onSubmit(login)">
+    <div class="form-group">
+      <label for="email" class="col-lg-3 control-label">email</label>
+      <div class="col-lg-9">
+        <input type="text" class="form-control" [formControl]="loginForm.controls['email']" placeholder="email">
+        <div *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched" class="alert alert-danger">
+          <span *ngIf="loginForm.controls['email'].value ==null || loginForm.controls['email'].value ==''">
+          Email is required!
+          </span>
+          <span *ngIf="loginForm.controls['email'].value !='' && loginForm.controls['email'].value !=null">
+          Email is invalid. Please fill with correct format!
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="col-lg-3 control-label">Password</label>
+      <div class="col-lg-9">
+        <input type="password" class="form-control" [formControl]="loginForm.controls['password']" placeholder="Password"
+          required>
+        <div *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched" class="alert alert-danger">
+          Password is required!
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> stay logged in
+          </label>
+        </div>
+        <label (click)="resetPassword()"><a>Forgot Password?</a></label><br>
+        <label (click)="register()"><a>Does not have account?</a></label>
+      </div>
+    </div>
+
+    <div class="login-button-container" align="right">
+      <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
+    </div>
+  </form>
+</div>

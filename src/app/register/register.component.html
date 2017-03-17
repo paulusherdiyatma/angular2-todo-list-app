@@ -1,0 +1,77 @@
+<div class="register-form-container">
+  <div *ngIf="isErrorOccured" class="alert alert-danger">
+    <span>
+        {{errorMessage}}
+    </span>
+  </div>
+  <h5 class="register-header-text">Register</h5>
+  <br>
+  <form [formGroup]="registerForm" class="register-form form-horizontal" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email" class="col-lg-3 control-label">email</label>
+      <div class="col-lg-9">
+        <input type="text" class="form-control" [formControl]="registerForm.controls['email']" placeholder="email">
+        <div *ngIf="!registerForm.controls['email'].valid && registerForm.controls['email'].touched" class="alert alert-danger">
+          <span *ngIf="registerForm.controls['email'].value ==null || registerForm.controls['email'].value ==''">
+          Email is required!
+          </span>
+          <span *ngIf="registerForm.controls['email'].value !='' && registerForm.controls['email'].value !=null">
+          Email is invalid. Please fill with correct format!
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fullName" class="col-lg-3 control-label">Full Name</label>
+      <div class="col-lg-9">
+        <input type="text" class="form-control" [formControl]="registerForm.controls['fullName']" placeholder="Full Name">
+        <div *ngIf="!registerForm.controls['fullName'].valid && registerForm.controls['fullName'].touched" class="alert alert-danger">
+          Full Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="username" class="col-lg-3 control-label">Username</label>
+      <div class="col-lg-9">
+        <input type="text" class="form-control" [formControl]="registerForm.controls['username']" placeholder="Username">
+        <div *ngIf="!registerForm.controls['username'].valid && registerForm.controls['username'].touched" class="alert alert-danger">
+          <span *ngIf="registerForm.controls['username'].value ==null || registerForm.controls['username'].value ==''">
+          Username is required!
+          </span>
+          <span *ngIf="registerForm.controls['username'].value !='' && registerForm.controls['username'].value !=null">
+          Username is invalid. It should has 5 minimum length.
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="col-lg-3 control-label">Password</label>
+      <div class="col-lg-9">
+        <input type="password" class="form-control" [formControl]="registerForm.controls['password']" placeholder="Password">
+        <div *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched" class="alert alert-danger">
+          Password is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword" class="col-lg-3 control-label">Confirm Password</label>
+      <div class="col-lg-9">
+        <input type="password" class="form-control" [formControl]="registerForm.controls['confirmPassword']" name="confirmPassword"
+          placeholder="Confirm Password">
+        <div *ngIf="(registerForm.controls['password'].value != registerForm.controls['confirmPassword'].value) && registerForm.controls['confirmPassword'].touched"
+          class="alert alert-danger">
+          Passwords do not match
+        </div>
+        <br>
+        <label (click)="resetPassword()"><a>Forgot Password?</a></label><br>
+        <label (click)="login()"><a>Already have an account?</a></label>
+      </div>
+
+    </div>
+
+    <div class="register-button-container" align="right">
+      <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">Register</button>
+    </div>
+  </form>
+</div>

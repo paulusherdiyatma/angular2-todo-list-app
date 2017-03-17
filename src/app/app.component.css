@@ -1,0 +1,17 @@
+
+.content {
+    min-height: calc(100vh - 140px);
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+    position: relative;
+    text-align: center;
+    height: auto;
+    margin: auto auto 0px auto;
+    overflow:visible;
+}
+
+.container {
+}
+.nav-bar-container {
+    border-bottom: 2px solid lightgray!important;
+}
